@@ -266,7 +266,7 @@ class SplashScreenState extends State<SplashScreen>
               },
               child: AnnotatedRegion(
                 value: SystemUiOverlayStyle(
-                  statusBarColor: context.color.territoryColor,
+                  statusBarColor: Colors.white,
                 ),
                 child: Scaffold(
                   backgroundColor: Colors.white,
@@ -285,7 +285,7 @@ class SplashScreenState extends State<SplashScreen>
                           child: SizedBox(
                             width: 150.rw(context),
                             height: 150.rh(context),
-                            child: UiUtils.getSvg(AppIcons.splashLogo),
+                            child: UiUtils.getSvg(AppIcons.splashLogo,),
                           ),
                         ),
                       ),

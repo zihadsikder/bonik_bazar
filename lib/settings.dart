@@ -37,7 +37,8 @@ class AppSettings {
 
 
 // DON'T FORGET TO GET HTTPS:// OR HTTP:// BEFORE YOUR ADMIN PANEL URL OR HOST URL
-  static const String hostUrl = "http://demo.bonikbazar.com"; // DON'T ADD / AT END
+  //static const String hostUrl = "http://192.168.10.141:8086";
+  static const String hostUrl = "https://demo.bonikbazar.com"; // DON'T ADD / AT END
   
   static const int apiDataLoadLimit = 20;
   static const int maxCategoryShowLengthInHomeScreen = 5;
@@ -77,7 +78,7 @@ it will call API in background without showing the process and when data availab
   static const int otpTimeOutSecond = 60 * 2;
 
   ///This code will show on login screen [Note: don't add  + symbol]
-  static const String defaultCountryCode = "88";
+  static const String defaultCountryCode = "880";
   static const bool disableCountrySelection = false;
 
   /* Default [False], this will hide

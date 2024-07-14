@@ -76,7 +76,7 @@
                 <data
                     android:host="demo.bonikbazar.com"
                     android:pathPattern="/.."
-                    android:scheme="http" />
+                    android:scheme="https" />
                 <data android:pathPattern="/items-details/.*" />
                 <data android:scheme="https" />
 
