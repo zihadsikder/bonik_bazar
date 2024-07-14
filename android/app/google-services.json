@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "819478028000",
+    "project_id": "bonik-bazar-83a92",
+    "storage_bucket": "bonik-bazar-83a92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819478028000:android:e12b6d402983eb51577a85",
+        "android_client_info": {
+          "package_name": "com.bonikbazar.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819478028000-6oo9faco8pa8cuvdi9vp7296o32ts14o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bonikbazar.app",
+            "certificate_hash": "8c07a857727d567e3da10a87aa61a9becf158750"
+          }
+        },
+        {
+          "client_id": "819478028000-cu3ab65v1oh0so5jlbi48rv4b33ntm72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC43o5jotnbmsqMzzSDqmWSyGU6ljTaE6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819478028000-cu3ab65v1oh0so5jlbi48rv4b33ntm72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
