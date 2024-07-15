@@ -101,6 +101,7 @@ flutter:
 
   assets:
     - assets/svg/
+    - assets/icons/
     - assets/svg/onboardings/
     - assets/svg/bottomnav/
     - assets/languages/

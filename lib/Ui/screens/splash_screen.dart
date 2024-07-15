@@ -285,7 +285,8 @@ class SplashScreenState extends State<SplashScreen>
                           child: SizedBox(
                             width: 150.rw(context),
                             height: 150.rh(context),
-                            child: UiUtils.getSvg(AppIcons.splashLogo,),
+                            //child: UiUtils.getSvg(AppIcons.splash),
+                            child : Image.asset("assets/icons/splash.png"),
                           ),
                         ),
                       ),

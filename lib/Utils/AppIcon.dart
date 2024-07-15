@@ -13,6 +13,7 @@ class AppIcons {
   //
   //** */
   static String splashLogo = _svgPath("Logo/splashlogo");
+  static String splashLogo2 = _svgPath("Logo/splashlogo2");
   static String bin = _svgPath("bin");
   static String update = _svgPath("update");
   static String companyLogo = _svgPath("Logo/company_logo");
@@ -115,11 +116,13 @@ class AppIcons {
 class MainIcons {
   ////////
   static String _base(String path) {
-    return "assets/Icons/$path";
+    return "assets/icons/$path";
   }
 
   ////////
   String appIcon = _base("AppIcon/icon.png");
+  String splash = _base("splash.png");
+
   String splashIcon = _base("SplashIcon/icon.png");
   String placeHolder = _base("Placeholder/icon.png");
   String homeIcon = _base("HomeIcon/icon.png");
