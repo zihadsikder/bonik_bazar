@@ -6,8 +6,10 @@ import '../../utils/ui_utils.dart';
 ///Light Theme Colors
 ///This color format is different, isn't it? .You can use hex colors here also but you have to remove '#' symbol and add 0xff instead.
 const Color primaryColor_ = Color(0xFFFFFFFF);
-const Color secondaryColor_ = Color(0xF0FFD963);
-const Color territoryColor_ = Color(0xFF000000);
+//const Color secondaryColor_ = Color(0xF0FFD963);
+const Color secondaryColor_ = Color(0xFFFFFFFF);
+const Color territoryColor_ = Color(0xFF002f34);
+//const Color territoryColor_ = Color(0xffFA6E53);
 const Color forthColor_ = Color(0xffFA6E53);
 const Color _backgroundColor = primaryColor_; //here you can change if you need
 const Color textDarkColor = Color(0xFF000000);
