@@ -146,7 +146,7 @@ class HomeScreenState extends State<HomeScreen>
           leading: Padding(
               padding: EdgeInsetsDirectional.only(
                   start: sidePadding.rw(context), end: sidePadding.rw(context)),
-              child: const LocationWidget()),
+              child: const LocationWidget(from: 'home',)),
           /* HiveUtils.getCityName() != null
                     ? const LocationWidget()
                     : const SizedBox.shrink()),*/

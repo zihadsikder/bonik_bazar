@@ -306,11 +306,7 @@ class _ItemCardState extends State<ItemCard> {
                                   child: Padding(
                                     padding:
                                         EdgeInsetsDirectional.only(start: 3.0),
-                                    child: Text(
-                                      widget.item?.address ?? "",
-                                      style: TextStyle(
-                                          overflow: TextOverflow.ellipsis),
-                                    )
+                                    child: Text(widget.item?.address ?? "", style: TextStyle(overflow: TextOverflow.ellipsis),)
                                         .size((widget.bigCard == true)
                                             ? context.font.small
                                             : context.font.smaller)

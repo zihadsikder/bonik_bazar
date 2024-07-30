@@ -137,7 +137,8 @@ import '../../../../utils/ui_utils.dart';
 
 
 class LocationWidget extends StatelessWidget {
-  const LocationWidget({super.key});
+  final String from;
+  const LocationWidget({super.key, required this.from});
 
   @override
   Widget build(BuildContext context) {
@@ -149,8 +150,12 @@ class LocationWidget extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () async {
-              Navigator.pushNamed(context, Routes.countriesScreen,
-                  arguments: {"from": "home"});
+              Navigator.pushNamed(
+                  context, Routes.statesScreen, arguments: {
+                "countryId": 19,
+                "countryName": "Bangladesh",
+                "from": from
+              });
               /* var result = await showModalBottomSheet(
                 isScrollControlled: true,
                 shape: const RoundedRectangleBorder(
