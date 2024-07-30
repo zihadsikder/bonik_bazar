@@ -146,7 +146,17 @@ class HomeScreenState extends State<HomeScreen>
           leading: Padding(
               padding: EdgeInsetsDirectional.only(
                   start: sidePadding.rw(context), end: sidePadding.rw(context)),
-              child: const LocationWidget(from: 'home',)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                      flex: 1,
+                      child: const LocationWidget(
+                        from: 'home',
+                      )),
+                  Flexible(flex: 2, child: const HomeSearchField()),
+                ],
+              )),
           /* HiveUtils.getCityName() != null
                     ? const LocationWidget()
                     : const SizedBox.shrink()),*/
@@ -185,7 +195,6 @@ class HomeScreenState extends State<HomeScreen>
                       return Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const HomeSearchField(),
                           const SliderWidget(),
                           const CategoryWidgetHome(),
                           ...List.generate(state.sections.length, (index) {

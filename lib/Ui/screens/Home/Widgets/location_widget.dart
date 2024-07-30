@@ -135,9 +135,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../../utils/AppIcon.dart';
 import '../../../../utils/ui_utils.dart';
 
-
 class LocationWidget extends StatelessWidget {
   final String from;
+
   const LocationWidget({super.key, required this.from});
 
   @override
@@ -150,8 +150,7 @@ class LocationWidget extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () async {
-              Navigator.pushNamed(
-                  context, Routes.statesScreen, arguments: {
+              Navigator.pushNamed(context, Routes.statesScreen, arguments: {
                 "countryId": 19,
                 "countryName": "Bangladesh",
                 "from": from
