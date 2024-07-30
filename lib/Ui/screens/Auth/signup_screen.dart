@@ -132,7 +132,7 @@ class _SignupScreenState extends CloudState<SignupScreen> {
                       const SizedBox(
                         height: 8,
                       ),
-                      Text("signUpToeClassify".translate(context))
+                      Text("signUpToBonikBazar".translate(context))
                           .size(context.font.large)
                           .color(
                             context.color.textColorDark.brighten(50),

@@ -38,6 +38,7 @@ class ItemRepository {
 
       parameters.addAll({
         "image": image,
+       // "show_only_to_premium": true,
         "show_only_to_premium": 1,
       });
 

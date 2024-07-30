@@ -441,7 +441,7 @@ class LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 8,
               ),
-              Text("loginToBonikBazar".translate(context))
+              Text("login To Bonik Bazar".translate(context))
                   .size(context.font.large)
                   .color(
                     context.color.textColorDark,

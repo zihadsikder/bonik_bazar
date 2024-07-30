@@ -280,42 +280,49 @@ class _ItemCardState extends State<ItemCard> {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("${Constant.currencySymbol} ${widget.item?.price?.toString()}")
-                            .bold()
-                            .color(context.color.territoryColor)
-                            .size(context.font.large),
-                        Text(widget.item!.name!)
-                            .firstUpperCaseWidget()
-                            .setMaxLines(lines: 1)
-                            .size(context.font.large),
-                        if (widget.item?.address != "")
-                          Row(
-                            children: [
-                              UiUtils.getSvg(
-                                AppIcons.location,
-                                width: widget.bigCard == true ? 10 : 8,
-                                height: widget.bigCard == true ? 13 : 11,
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding:
-                                      EdgeInsetsDirectional.only(start: 3.0),
-                                  child: Text(widget.item?.address ?? "")
-                                      .size((widget.bigCard == true)
-                                          ? context.font.small
-                                          : context.font.smaller)
-                                      .setMaxLines(lines: 1)
-                                      .color(context.color.textDefaultColor
-                                          .withOpacity(0.5)),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("${Constant.currencySymbol} ${widget.item?.price?.toString()}")
+                              .bold()
+                              .color(context.color.territoryColor)
+                              .size(context.font.large),
+                          Text(widget.item!.name!)
+                              .firstUpperCaseWidget()
+                              .setMaxLines(lines: 1)
+                              .size(context.font.large),
+                          if (widget.item?.address != "")
+                            Row(
+                              children: [
+                                UiUtils.getSvg(
+                                  AppIcons.location,
+                                  width: widget.bigCard == true ? 10 : 8,
+                                  height: widget.bigCard == true ? 13 : 11,
                                 ),
-                              )
-                            ],
-                          ),
-                      ],
+                                Expanded(
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsetsDirectional.only(start: 3.0),
+                                    child: Text(
+                                      widget.item?.address ?? "",
+                                      style: TextStyle(
+                                          overflow: TextOverflow.ellipsis),
+                                    )
+                                        .size((widget.bigCard == true)
+                                            ? context.font.small
+                                            : context.font.smaller)
+                                        .setMaxLines(lines: 1)
+                                        .color(context.color.textDefaultColor
+                                            .withOpacity(0.5)),
+                                  ),
+                                )
+                              ],
+                            ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

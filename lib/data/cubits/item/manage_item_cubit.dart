@@ -13,10 +13,12 @@ class ManageItemInitial extends ManageItemState {}
 class ManageItemInProgress extends ManageItemState {}
 
 class ManageItemSuccess extends ManageItemState {
+
   final ManageItemType type;
   final ItemModel model;
 
   ManageItemSuccess(this.model, this.type);
+
 }
 
 class ManageItemFail extends ManageItemState {
@@ -24,7 +26,6 @@ class ManageItemFail extends ManageItemState {
 
   ManageItemFail(this.error);
 }
-
 class ManageItemCubit extends Cubit<ManageItemState> {
   ManageItemCubit() : super(ManageItemInitial());
   final ItemRepository _itemRepository = ItemRepository();
@@ -37,6 +38,7 @@ class ManageItemCubit extends Cubit<ManageItemState> {
       if (type == ManageItemType.add) {
         ItemModel itemModel =
             await _itemRepository.createItem(data, mainImage!, otherImage!);
+
         emit(ManageItemSuccess(itemModel, type));
       } else if (type == ManageItemType.edit) {
         ItemModel itemModel =
@@ -44,6 +46,7 @@ class ManageItemCubit extends Cubit<ManageItemState> {
         emit(ManageItemSuccess(itemModel, type));
       }
     } catch (e) {
+      print('exception---------------------------------------: $e');
       emit(ManageItemFail(e));
     }
   }
