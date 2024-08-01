@@ -41,7 +41,6 @@ class LocationPermissionScreenState extends State<LocationPermissionScreen>
     super.dispose();
   }
 
-
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
@@ -141,83 +140,98 @@ class LocationPermissionScreenState extends State<LocationPermissionScreen>
       ),
       child: Scaffold(
         backgroundColor: context.color.backgroundColor,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Align(
-                alignment: AlignmentDirectional.topEnd,
-                child: FittedBox(
-                  fit: BoxFit.none,
-                  child: MaterialButton(
-                    onPressed: () {
-                      //HiveUtils.setUserIsNotNew();
+        body: Column(
+          children: [
+            SizedBox(
+              height: 24,
+            ),
+            Align(
+              alignment: AlignmentDirectional.topEnd,
+              child: FittedBox(
+                fit: BoxFit.none,
+                child: MaterialButton(
+                  onPressed: () {
+                    //HiveUtils.setUserIsNotNew();
 
-                      Navigator.pushNamed(
-                        context,
-                        Routes.main,
-                        arguments: {
-                          "from": "login",
-                          "isSkipped": true,
-                        },
-                      );
-                    },
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    color: context.color.forthColor.withOpacity(0.102),
-                    elevation: 0,
-                    height: 28,
-                    minWidth: 64,
-                    child: Text("skip".translate(context))
-                        .color(context.color.forthColor),
+                    Navigator.pushNamed(
+                      context,
+                      Routes.main,
+                      arguments: {
+                        "from": "login",
+                        "isSkipped": true,
+                      },
+                    );
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
                   ),
+                  color: context.color.forthColor.withOpacity(0.102),
+                  elevation: 0,
+                  height: 28,
+                  minWidth: 64,
+                  child: Text("skip".translate(context))
+                      .color(context.color.forthColor),
                 ),
               ),
-              UiUtils.getSvg(AppIcons.locationAccessIcon),
-              const SizedBox(height: 19),
-              Text(
-                "whatsYourLocation".translate(context),
-              ).size(context.font.extraLarge).bold(weight: FontWeight.w600),
-              const SizedBox(height: 14),
-              Text(
-                'weNeedLocationAvailableLbl'.translate(context),
-              )
-                  .size(context.font.larger)
-                  .color(context.color.textDefaultColor.withOpacity(0.65))
-                  .centerAlign(),
-              const SizedBox(height: 58),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
-                child: UiUtils.buildButton(context,
-                    showElevation: false,
-                    buttonColor: context.color.territoryColor,
-                    textColor: context.color.secondaryColor, onPressed: () {
-                  // Check location permission when the button is pressed
-                  _getCurrentLocation();
-                },
-                    radius: 8,
-                    height: 46,
-                    buttonTitle: "allowLocationAccess".translate(context)),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
-                child: UiUtils.buildButton(context,
-                    showElevation: false,
-                    buttonColor: context.color.backgroundColor,
-                    border: BorderSide(color: context.color.territoryColor),
-                    textColor: context.color.territoryColor, onPressed: () {
-                  Navigator.pushNamed(context, Routes.countriesScreen,
-                      arguments: {"from": "location"});
-                },
-                    radius: 8,
-                    height: 46,
-                    buttonTitle: "enterManually".translate(context)),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                UiUtils.getSvg(AppIcons.locationAccessIcon),
+                const SizedBox(height: 19),
+                Text(
+                  "whatsYourLocation".translate(context),
+                ).size(context.font.extraLarge).bold(weight: FontWeight.w600),
+                const SizedBox(height: 14),
+                Text(
+                  'weNeedLocationAvailableLbl'.translate(context),
+                )
+                    .size(context.font.larger)
+                    .color(context.color.textDefaultColor.withOpacity(0.65))
+                    .centerAlign(),
+                const SizedBox(height: 58),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 12),
+                  child: UiUtils.buildButton(context,
+                      showElevation: false,
+                      buttonColor: context.color.territoryColor,
+                      textColor: context.color.secondaryColor, onPressed: () {
+                    // Check location permission when the button is pressed
+                    _getCurrentLocation();
+                  },
+                      radius: 8,
+                      height: 46,
+                      buttonTitle: "allowLocationAccess".translate(context)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 12),
+                  child: UiUtils.buildButton(context,
+                      showElevation: false,
+                      buttonColor: context.color.backgroundColor,
+                      border: BorderSide(color: context.color.territoryColor),
+                      textColor: context.color.territoryColor, onPressed: () {
+                    /// navigate direct country screen
+                    Navigator.pushNamed(context, Routes.statesScreen,
+                        arguments: {
+                          "countryId": 19,
+                          "countryName": "Bangladesh",
+                          "from": "location"
+                        });
+                    // Navigator.pushNamed(context, Routes.countriesScreen,
+                    //     arguments: {"from": "location"});
+                  },
+                      radius: 8,
+                      height: 46,
+                      buttonTitle: "enterManually".translate(context)),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
