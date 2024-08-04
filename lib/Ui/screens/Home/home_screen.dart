@@ -1,16 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
-//import 'package:app_links/app_links.dart';
 import 'package:eClassify/Ui/screens/Home/Widgets/grid_list_adapter.dart';
 import 'package:eClassify/data/cubits/Home/fetch_home_all_items_cubit.dart';
 import 'package:eClassify/data/cubits/Home/fetch_home_screen_cubit.dart';
 import 'package:eClassify/data/cubits/favorite/favoriteCubit.dart';
 
-import 'package:eClassify/data/model/Home/home_screen_section.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-//import 'package:uni_links/uni_links.dart';
 
 import '../../../Utils/api.dart';
 
@@ -23,12 +20,10 @@ import '../../../exports/main_export.dart';
 import '../../../utils/Extensions/extensions.dart';
 import '../../../utils/responsiveSize.dart';
 import '../../../utils/ui_utils.dart';
-import '../AdBannderScreen.dart';
 import '../Widgets/Errors/no_internet.dart';
 import '../Widgets/Errors/something_went_wrong.dart';
 import '../Widgets/shimmerLoadingContainer.dart';
 import '../home/Widgets/item_horizontal_card.dart';
-import 'Widgets/category_widget_home.dart';
 import 'Widgets/home_search.dart';
 import 'Widgets/home_sections_adapter.dart';
 import 'Widgets/home_shimmers.dart';
@@ -196,37 +191,40 @@ class HomeScreenState extends State<HomeScreen>
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           const SliderWidget(),
-                          const CategoryWidgetHome(),
-                          ...List.generate(state.sections.length, (index) {
-                            HomeScreenSection section = state.sections[index];
-                            if (state.sections.isNotEmpty) {
-                              return HomeSectionsAdapter(
-                                section: section,
-                              );
-                            } else {
-                              return SizedBox.shrink();
-                            }
-                          }),
-                          if (state.sections.isNotEmpty &&
-                              Constant.isGoogleBannerAdsEnabled == "1") ...[
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: context.color.secondaryColor),
-                              height: 85,
-                              margin: EdgeInsets.symmetric(
-                                  horizontal: sidePadding, vertical: 10),
 
-                              // Height of the banner ad container
-                              alignment: AlignmentDirectional.center,
-                              child:
-                                  AdBannerWidget(), // Custom widget for banner ad
-                            )
-                          ] else ...[
-                            SizedBox(
-                              height: 10,
-                            )
-                          ],
+                          /// hide category widget from home
+                          //const CategoryWidgetHome(),
+
+                          /// hide top add & pin add home section widgets
+                          // ...List.generate(state.sections.length, (index) {
+                          //   HomeScreenSection section = state.sections[index];
+                          //   if (state.sections.isNotEmpty) {
+                          //     return HomeSectionsAdapter(
+                          //       section: section,
+                          //     );
+                          //   } else {
+                          //     return SizedBox.shrink();
+                          //   }
+                          // }),
+                          // if (state.sections.isNotEmpty &&
+                          //     Constant.isGoogleBannerAdsEnabled == "1") ...[
+                          //   Container(
+                          //     decoration: BoxDecoration(
+                          //         borderRadius: BorderRadius.circular(15),
+                          //         color: context.color.secondaryColor),
+                          //     height: 85,
+                          //     margin: EdgeInsets.symmetric(
+                          //         horizontal: sidePadding, vertical: 10),
+                          //
+                          //     // Height of the banner ad container
+                          //     alignment: AlignmentDirectional.center,
+                          //     child: AdBannerWidget(), // Custom widget for banner ad
+                          //   )
+                          // ] else ...[
+                          //   SizedBox(
+                          //     height: 10,
+                          //   )
+                          // ],
                         ],
                       );
                     }
@@ -234,6 +232,16 @@ class HomeScreenState extends State<HomeScreen>
                     return SizedBox.shrink();
                   },
                 ),
+
+                /// show a single bar
+                Container(
+                  height: 1,
+                  color: context.color.territoryColor,
+                  margin:
+                      EdgeInsets.only(top: 12, bottom: 8, right: 16, left: 16),
+                ),
+
+                /// all Item widgets
                 const AllItemsWidget(),
                 const SizedBox(
                   height: 30,
@@ -543,36 +551,38 @@ class AllItemsWidget extends StatelessWidget {
   }
 }
 
-Widget _builderWrapper(FetchHomeAllItemsSuccess state, BuildContext context,
-    int index, bool isGrid) {
-  ItemModel? item = state.items[index];
 
-  if (isGrid) {
-    // Show ItemCard for grid items
-    return ItemCard(
-      item: item,
-      width: 192,
-    );
-  } else {
-    // Show ItemHorizontalCard for list items
-    return InkWell(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          Routes.adDetailsScreen,
-          arguments: {
-            'model': item,
-          },
-        );
-      },
-      child: ItemHorizontalCard(
-        item: item,
-        showLikeButton: true,
-        additionalImageWidth: 8,
-      ),
-    );
-  }
-}
+/// home section add Item card
+// Widget _builderWrapper(FetchHomeAllItemsSuccess state, BuildContext context,
+//     int index, bool isGrid) {
+//   ItemModel? item = state.items[index];
+//
+//   if (isGrid) {
+//     // Show ItemCard for grid items
+//     return ItemCard(
+//       item: item,
+//       width: 192,
+//     );
+//   } else {
+//     // Show ItemHorizontalCard for list items
+//     return InkWell(
+//       onTap: () {
+//         Navigator.pushNamed(
+//           context,
+//           Routes.adDetailsScreen,
+//           arguments: {
+//             'model': item,
+//           },
+//         );
+//       },
+//       child: ItemHorizontalCard(
+//         item: item,
+//         showLikeButton: true,
+//         additionalImageWidth: 8,
+//       ),
+//     );
+//   }
+// }
 
 Future<void> notificationPermissionChecker() async {
   if (!(await Permission.notification.isGranted)) {
