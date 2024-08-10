@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bonikbazar.app">
     <!--
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -74,7 +74,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="demo.bonikbazar.com"
+                    android:host="xyz.bonikbazar.com.bd"
                     android:pathPattern="/.."
                     android:scheme="https" />
                 <data android:pathPattern="/items-details/.*" />

@@ -38,7 +38,7 @@ class AppSettings {
 
 // DON'T FORGET TO GET HTTPS:// OR HTTP:// BEFORE YOUR ADMIN PANEL URL OR HOST URL
   //static const String hostUrl = "http://192.168.10.141:8086";
-  static const String hostUrl = "https://demo.bonikbazar.com"; // DON'T ADD / AT END
+  static const String hostUrl = "https://xyz.bonikbazar.com.bd"; // DON'T ADD / AT END
   
   static const int apiDataLoadLimit = 20;
   static const int maxCategoryShowLengthInHomeScreen = 5;
@@ -60,15 +60,15 @@ it will call API in background without showing the process and when data availab
   ///Native deep link
   //static const String shareNavigationWebUrl = "eclassify.thewrteam.in";
 
-  static const String shareNavigationWebUrl = "demo.bonikbazar.com";
+  static const String shareNavigationWebUrl = "xyz.bonikbazar.com.bd";
 
 
   /// You will find this prefix from firebase console in dynamic link section
   static const String deepLinkPrefix =
-      "https://demo.bonikbazar.page.link"; //demo.page.link
+      "https://xyz.bonikbazar.page.link"; //demo.page.link
 
   //set anything you want
-  static const String deepLinkName = "demo.bonikbazar.com"; //deeplink demo.com
+  static const String deepLinkName = "xyz.bonikbazar.com.bd"; //deeplink demo.com
 
   static const MapType googleMapType =
       MapType.normal; //none , normal , satellite , terrain , hybrid
