@@ -93,7 +93,7 @@ class LanguagesListScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(21),
                         child: UiUtils.imageType(
                           setting[index]['image'],
-                          fit: BoxFit.contain,
+                          fit: BoxFit.cover,
                           width: 42,
                           height: 42,
                         ),
