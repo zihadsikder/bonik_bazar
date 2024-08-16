@@ -145,7 +145,8 @@ class HomeScreenState extends State<HomeScreen>
                     : const SizedBox.shrink()),*/
           backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         ),
-        backgroundColor: context.color.primaryColor,
+        drawer: Drawer(),
+        //backgroundColor: context.color.primaryColor,
         body: RefreshIndicator(
           key: _refreshIndicatorKey,
 

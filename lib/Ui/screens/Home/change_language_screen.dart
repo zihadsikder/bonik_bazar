@@ -23,23 +23,20 @@ class LanguagesListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (context
-            .watch<FetchSystemSettingsCubit>()
-            .getSetting(SystemSetting.language) ==
-        null) {
+    final systemSettingsCubit = context.watch<FetchSystemSettingsCubit>();
+    final setting = systemSettingsCubit.getSetting(SystemSetting.language) as List?;
+
+    if (setting == null || setting.isEmpty) {
       return Scaffold(
         backgroundColor: context.color.primaryColor,
         appBar: UiUtils.buildAppBar(context,
             showBackButton: true, title: "chooseLanguage".translate(context)),
-        body: Center(child: UiUtils.progress()),
+        body: Center(child: Text("No languages available.")),
       );
     }
 
-    List setting = context
-        .watch<FetchSystemSettingsCubit>()
-        .getSetting(SystemSetting.language) as List;
+    final language = context.watch<LanguageCubit>().state;
 
-    var language = context.watch<LanguageCubit>().state;
     return Scaffold(
       backgroundColor: context.color.primaryColor,
       appBar: UiUtils.buildAppBar(context,
@@ -52,80 +49,86 @@ class LanguagesListScreen extends StatelessWidget {
           if (state is FetchLanguageSuccess) {
             Widgets.hideLoder(context);
 
-            Map<String, dynamic> map = state.toMap();
-
-            var data = map['file_name'];
+            final map = state.toMap();
+            final data = map['file_name'];
             map['data'] = data;
-            map.remove("file_name");
+            map.remove('file_name');
 
             HiveUtils.storeLanguage(map);
             context.read<LanguageCubit>().emit(LanguageLoader(map));
             context.read<FetchCategoryCubit>().fetchCategories();
           }
+          if (state is FetchLanguageFailure) {
+            Widgets.hideLoder(context);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text("Failed to load language. Please try again.")),
+            );
+          }
         },
         child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: setting.length,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            itemBuilder: (context, index) {
-              Color color = (language as LanguageLoader).language['code'] ==
-                      setting[index]['code']
-                  ? context.color.territoryColor
-                  : context.color.textLightColor.withOpacity(0.03);
+          physics: const BouncingScrollPhysics(),
+          itemCount: setting.length,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          itemBuilder: (context, index) {
+            final isSelected = (language as LanguageLoader).language['code'] ==
+                setting[index]['code'];
 
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: color,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: ListTile(
-                    onTap: () {
-                      context
-                          .read<FetchLanguageCubit>()
-                          .getLanguage(setting[index]['code']);
-                    },
-                    leading: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(21)),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(21),
-                        child: UiUtils.imageType(
-                          setting[index]['image'],
-                          fit: BoxFit.cover,
-                          width: 42,
-                          height: 42,
-                        ),
+            final color = isSelected
+                ? context.color.territoryColor
+                : context.color.textLightColor.withOpacity(0.03);
+
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: ListTile(
+                  onTap: () {
+                    final languageCode = setting[index]['code'];
+                    if (languageCode != null) {
+                      context.read<FetchLanguageCubit>().getLanguage(languageCode);
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Language code is missing!")),
+                      );
+                    }
+                  },
+                  leading: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(21),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(21),
+                      child: UiUtils.imageType(
+                        setting[index]['image'],
+                        fit: BoxFit.cover,
+                        width: 42,
+                        height: 42,
                       ),
                     ),
-                    title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(setting[index]['name'])
-                            .color((language).language['code'] ==
-                                    setting[index]['code']
-                                ? context.color.buttonColor
-                                : context.color.textColorDark)
-                            .bold(),
-                        Text(setting[index]['name_in_english'])
-                            .color((language).language['code'] ==
-                                    setting[index]['code']
-                                ? context.color.buttonColor.withOpacity(0.7)
-                                : context.color.textColorDark.withOpacity(0.6))
-                            .size(context.font.small)
-                      ],
-                    ),
-                    /*   subtitle: Text(setting[index]['name'])
-                          .color((language).language['code'] ==
-                                  setting[index]['code']
-                              ? context.color.buttonColor
-                              : context.color.textColorDark)
-                          .size(context.font.small)*/
+                  ),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(setting[index]['name'])
+                          .color(isSelected
+                          ? context.color.buttonColor
+                          : context.color.textColorDark)
+                          .bold(),
+                      Text(setting[index]['name_in_english'])
+                          .color(isSelected
+                          ? context.color.buttonColor.withOpacity(0.7)
+                          : context.color.textColorDark.withOpacity(0.6))
+                          .size(context.font.small),
+                    ],
                   ),
                 ),
-              );
-            }),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

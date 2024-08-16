@@ -565,6 +565,7 @@ class _AddItemDetailsState extends CloudState<AddItemDetails> {
     );
   }
 
+
   /*Widget titleImageListener() {
     return _pickTitleImage.listenChangesInUI((context, file) {
       Widget currentWidget = Container();
@@ -790,7 +791,6 @@ class _AddItemDetailsState extends CloudState<AddItemDetails> {
     });
   }
 
-
   Widget itemImagesListener() {
     return itemImagePicker.listenChangesInUI((context, files) {
       Widget current = Container();
@@ -804,11 +804,9 @@ class _AddItemDetailsState extends CloudState<AddItemDetails> {
                 onTap: () {
                   HelperUtils.unfocus();
                   if (image is String) {
-                    UiUtils.showFullScreenImage(context,
-                        provider: NetworkImage(image));
+                    UiUtils.showFullScreenImage(context, provider: NetworkImage(image));
                   } else {
-                    UiUtils.showFullScreenImage(context,
-                        provider: FileImage(image));
+                    UiUtils.showFullScreenImage(context, provider: FileImage(image));
                   }
                 },
                 child: Container(
@@ -847,17 +845,18 @@ class _AddItemDetailsState extends CloudState<AddItemDetails> {
                 onTap: () {
                   showImageSourceDialog(context, (source) {
                     itemImagePicker.pick(
-                        pickMultiple: source == ImageSource.gallery,
-                        context: context,
-                        imageLimit: 5,
-                        maxLength: mixedItemImageList.length,
-                        source: source);
+                      pickMultiple: source == ImageSource.gallery,
+                      context: context,
+                      imageLimit: 5,
+                      maxLength: mixedItemImageList.length,
+                      source: source,
+                    );
                   });
                 },
                 child: Container(
                   clipBehavior: Clip.antiAlias,
                   decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                  BoxDecoration(borderRadius: BorderRadius.circular(10)),
                   alignment: AlignmentDirectional.center,
                   height: 48.rh(context),
                   child: Text("addOtherPicture".translate(context),
@@ -874,11 +873,12 @@ class _AddItemDetailsState extends CloudState<AddItemDetails> {
               uploadPhotoCard(context, onTap: () {
                 showImageSourceDialog(context, (source) {
                   itemImagePicker.pick(
-                      pickMultiple: source == ImageSource.gallery,
-                      context: context,
-                      imageLimit: 5,
-                      maxLength: mixedItemImageList.length,
-                      source: source);
+                    pickMultiple: source == ImageSource.gallery,
+                    context: context,
+                    imageLimit: 5,
+                    maxLength: mixedItemImageList.length,
+                    source: source,
+                  );
                 });
               })
         ],

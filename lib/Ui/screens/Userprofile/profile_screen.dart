@@ -108,7 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             width: 24,
             colorFilter: color == null
                 ? ColorFilter.mode(
-                context.color.territoryColor, BlendMode.srcIn)
+                    context.color.territoryColor, BlendMode.srcIn)
                 : ColorFilter.mode(color, BlendMode.srcIn),
           )),
     );
@@ -127,20 +127,20 @@ class _ProfileScreenState extends State<ProfileScreen>
           context: context, statusBarColor: context.color.secondaryColor),
       child: Scaffold(
         backgroundColor: context.color.primaryColor,
-        appBar: UiUtils.buildAppBar(context,
-            showBackButton: false,
-            bottomHeight: 10,
-            title: "myProfile".translate(context),
-            actions: [
-              if (HiveUtils.isUserAuthenticated())
-                setIconButtons(
-                  assetName: AppIcons.logout,
-                  onTap: () {
-                    logOutConfirmWidget();
-                  },
-                  color: context.color.textDefaultColor,
-                ),
-            ]),
+        appBar: UiUtils.buildAppBar(
+          context,
+          showBackButton: false,
+          bottomHeight: 10,
+          title: "myProfile".translate(context),
+          actions: [
+            if (HiveUtils.isUserAuthenticated())
+              setIconButtons(
+                assetName: AppIcons.logout,
+                onTap: logOutConfirmWidget,
+                color: context.color.textDefaultColor,
+              ),
+          ],
+        ),
         body: ScrollConfiguration(
           behavior: RemoveGlow(),
           child: SingleChildScrollView(
@@ -149,6 +149,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             child: Padding(
               padding: const EdgeInsets.all(18.0),
               child: Column(children: <Widget>[
+                // Profile Info Section
                 Container(
                   height: 91,
                   decoration: BoxDecoration(
@@ -171,9 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                           width: context.screenWidth * 0.015,
                         ),
                         SizedBox(
-                          // height: 77,
                           child: Column(
-                            // crossAxisAlignment: CrossAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
@@ -198,98 +197,65 @@ class _ProfileScreenState extends State<ProfileScreen>
                         const Spacer(),
                         !HiveUtils.isUserAuthenticated()
                             ? MaterialButton(
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: context.color.borderColor,
-                              width: 1.5,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          onPressed: () {
-                            Navigator.pushNamed(
-                              context,
-                              Routes.login,
-                              arguments: {"popToCurrent": true},
-                            );
-                          },
-                          child: Text("loginLbl".translate(context)),
-                        )
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    color: context.color.borderColor,
+                                    width: 1.5,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    Routes.login,
+                                    arguments: {"popToCurrent": true},
+                                  );
+                                },
+                                child: Text("loginLbl".translate(context)),
+                              )
                             : InkWell(
-                          onTap: () {
-                            HelperUtils.goToNextPage(
-                                Routes.completeProfile, context, false,
-                                args: {"from": "profile"});
-                          },
-                          child: Container(
-                            width: 40.rw(context),
-                            height: 40.rh(context),
-                            decoration: BoxDecoration(
-                              color: context.color.secondaryColor,
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                color: context.color.borderColor,
-                                width: 1.5,
-                              ),
-                            ),
-                            child: FittedBox(
-                              fit: BoxFit.none,
-                              child: SizedBox(
-                                width: 12.rw(context),
-                                height: 22.rh(context),
-                                child: UiUtils.getSvg(
-                                  AppIcons.arrowRight,
-                                  color: context.color.textColorDark,
+                                onTap: () {
+                                  HelperUtils.goToNextPage(
+                                    Routes.completeProfile,
+                                    context,
+                                    false,
+                                    args: {"from": "profile"},
+                                  );
+                                },
+                                child: Container(
+                                  width: 40.rw(context),
+                                  height: 40.rh(context),
+                                  decoration: BoxDecoration(
+                                    color: context.color.secondaryColor,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: context.color.borderColor,
+                                      width: 1.5,
+                                    ),
+                                  ),
+                                  child: FittedBox(
+                                    fit: BoxFit.none,
+                                    child: SizedBox(
+                                      width: 12.rw(context),
+                                      height: 22.rh(context),
+                                      child: UiUtils.getSvg(
+                                        AppIcons.arrowRight,
+                                        color: context.color.textColorDark,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 20),
+
+                // Profile Menu Section
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    // customTile(
-                    //   context,
-                    //   title: "ONLY FOR DEVELOPMENT",
-                    //   svgImagePath: AppIcons.enquiry,
-                    //   onTap: () async {
-                    //     var s = await FirebaseMessaging.instance.getToken();
-                    //     Navigator.push(context, MaterialPageRoute(
-                    //       builder: (context) {
-                    //         return Scaffold(
-                    //           body: Padding(
-                    //             padding: const EdgeInsets.all(20.0),
-                    //             child: Center(
-                    //               child: SelectableText(s.toString()),
-                    //             ),
-                    //           ),
-                    //         );
-                    //       },
-                    //     ));
-                    //   },
-                    // ),
-                    //
-                    // customTile(
-                    //   context,
-                    //   title: UiUtils.getTranslatedLabel(context, "myEnquiry"),
-                    //   svgImagePath: AppIcons.enquiry,
-                    //   onTap: () {
-                    //     Navigator.pushNamed(context, Routes.myEnquiry);
-                    //   },
-                    // ),
-                    //
-                    //THIS IS EXPERIMENTAL
-
                     customTile(
                       context,
                       title: "myFeaturedAds".translate(context),
@@ -297,151 +263,140 @@ class _ProfileScreenState extends State<ProfileScreen>
                       onTap: () async {
                         APICallTrigger.trigger();
                         UiUtils.checkUser(
-                            onNotGuest: () {
-                              Navigator.pushNamed(
-                                  context, Routes.myAdvertisment,
-                                  arguments: {});
-                            },
-                            context: context);
+                          onNotGuest: () {
+                            Navigator.pushNamed(
+                              context,
+                              Routes.myAdvertisment,
+                              arguments: {},
+                            );
+                          },
+                          context: context,
+                        );
                       },
                     ),
-
                     customTile(
                       context,
                       title: "subscription".translate(context),
                       svgImagePath: AppIcons.subscription,
-                      onTap: () async {
-                        //TODO: change it once @End
-
+                      onTap: () {
                         UiUtils.checkUser(
-                            onNotGuest: () {
-                              Navigator.pushNamed(
-                                  context, Routes.subscriptionPackageListRoute);
-                            },
-                            context: context);
+                          onNotGuest: () {
+                            Navigator.pushNamed(
+                              context,
+                              Routes.subscriptionPackageListRoute,
+                            );
+                          },
+                          context: context,
+                        );
                       },
                     ),
-
                     customTile(
                       context,
                       title: "transactionHistory".translate(context),
                       svgImagePath: AppIcons.transaction,
                       onTap: () {
                         UiUtils.checkUser(
-                            onNotGuest: () {
-                              Navigator.pushNamed(
-                                  context, Routes.transactionHistory);
-                            },
-                            context: context);
+                          onNotGuest: () {
+                            Navigator.pushNamed(
+                              context,
+                              Routes.transactionHistory,
+                            );
+                          },
+                          context: context,
+                        );
                       },
                     ),
-
-                    /*   customTile(
-                      context,
-                      title: "personalized".translate(context),
-                      svgImagePath: AppIcons.magic,
-                      onTap: () {
-                        GuestChecker.check(onNotGuest: () {
-                          Navigator.pushNamed(
-                              context, Routes.personalizedItemScreen,
-                              arguments: {
-                                "type": PersonalizedVisitType.Normal
-                              });
-                        });
-                      },
-                    ),*/
-
                     customTile(
                       context,
                       title: "language".translate(context),
                       svgImagePath: AppIcons.language,
                       onTap: () {
                         Navigator.pushNamed(
-                            context, Routes.languageListScreenRoute);
+                          context,
+                          Routes.languageListScreenRoute,
+                        );
                       },
                     ),
-
                     ValueListenableBuilder(
-                        valueListenable: isDarkTheme,
-                        builder: (context, v, c) {
-                          return customTile(
-                            context,
-                            title: "darkTheme".translate(context),
-                            svgImagePath: AppIcons.darkTheme,
-                            isSwitchBox: true,
-                            onTapSwitch: (value) {
-                              context.read<AppThemeCubit>().changeTheme(
-                                  value == true
-                                      ? AppTheme.dark
-                                      : AppTheme.light);
-                              setState(() {
-                                isDarkTheme.value = value;
-                              });
-                            },
-                            switchValue: v,
-                            onTap: () {},
-                          );
-                        }),
-
+                      valueListenable: isDarkTheme,
+                      builder: (context, value, child) {
+                        return customTile(
+                          context,
+                          title: "darkTheme".translate(context),
+                          svgImagePath: AppIcons.darkTheme,
+                          isSwitchBox: true,
+                          onTapSwitch: (newValue) {
+                            context.read<AppThemeCubit>().changeTheme(
+                                newValue == true
+                                    ? AppTheme.dark
+                                    : AppTheme.light);
+                            isDarkTheme.value = newValue;
+                          },
+                          switchValue: value,
+                          onTap: () {},
+                        );
+                      },
+                    ),
                     customTile(
                       context,
                       title: "notifications".translate(context),
                       svgImagePath: AppIcons.notification,
                       onTap: () {
                         UiUtils.checkUser(
-                            onNotGuest: () {
-                              Navigator.pushNamed(
-                                  context, Routes.notificationPage);
-                            },
-                            context: context);
+                          onNotGuest: () {
+                            Navigator.pushNamed(
+                              context,
+                              Routes.notificationPage,
+                            );
+                          },
+                          context: context,
+                        );
                       },
                     ),
-
                     customTile(
                       context,
                       title: "blogs".translate(context),
                       svgImagePath: AppIcons.articles,
                       onTap: () {
                         UiUtils.checkUser(
-                            onNotGuest: () {
-                              Navigator.pushNamed(
-                                context,
-                                Routes.blogsScreenRoute,
-                              );
-                            },
-                            context: context);
+                          onNotGuest: () {
+                            Navigator.pushNamed(
+                              context,
+                              Routes.blogsScreenRoute,
+                            );
+                          },
+                          context: context,
+                        );
                       },
                     ),
-
                     customTile(
                       context,
                       title: "favorites".translate(context),
                       svgImagePath: AppIcons.favorites,
                       onTap: () {
                         UiUtils.checkUser(
-                            onNotGuest: () {
-                              Navigator.pushNamed(
-                                  context, Routes.favoritesScreen);
-                            },
-                            context: context);
+                          onNotGuest: () {
+                            Navigator.pushNamed(
+                              context,
+                              Routes.favoritesScreen,
+                            );
+                          },
+                          context: context,
+                        );
                       },
                     ),
-
-
                     customTile(
                       context,
                       title: "shareApp".translate(context),
                       svgImagePath: AppIcons.shareApp,
                       onTap: shareApp,
                     ),
-
                     customTile(
                       context,
                       title: "rateUs".translate(context),
                       svgImagePath: AppIcons.rateUs,
                       onTap: rateUs,
                     ),
-
                     customTile(
                       context,
                       title: "contactUs".translate(context),
@@ -451,37 +406,38 @@ class _ProfileScreenState extends State<ProfileScreen>
                           context,
                           Routes.contactUs,
                         );
-                        // Navigator.pushNamed(context, Routes.ab);
                       },
                     ),
-
                     customTile(
                       context,
                       title: "aboutUs".translate(context),
                       svgImagePath: AppIcons.aboutUs,
                       onTap: () {
-                        Navigator.pushNamed(context, Routes.profileSettings,
-                            arguments: {
-                              'title': "aboutUs".translate(context),
-                              'param': Api.aboutUs
-                            });
-                        // Navigator.pushNamed(context, Routes.ab);
+                        Navigator.pushNamed(
+                          context,
+                          Routes.profileSettings,
+                          arguments: {
+                            'title': "aboutUs".translate(context),
+                            'param': Api.aboutUs,
+                          },
+                        );
                       },
                     ),
-
                     customTile(
                       context,
                       title: "termsConditions".translate(context),
                       svgImagePath: AppIcons.terms,
                       onTap: () {
-                        Navigator.pushNamed(context, Routes.profileSettings,
-                            arguments: {
-                              'title': "termsConditions".translate(context),
-                              'param': Api.termsAndConditions
-                            });
+                        Navigator.pushNamed(
+                          context,
+                          Routes.profileSettings,
+                          arguments: {
+                            'title': "termsConditions".translate(context),
+                            'param': Api.termsAndConditions,
+                          },
+                        );
                       },
                     ),
-
                     customTile(
                       context,
                       title: "privacyPolicy".translate(context),
@@ -492,12 +448,12 @@ class _ProfileScreenState extends State<ProfileScreen>
                           Routes.profileSettings,
                           arguments: {
                             'title': "privacyPolicy".translate(context),
-                            'param': Api.privacyPolicy
+                            'param': Api.privacyPolicy,
                           },
                         );
                       },
                     ),
-                    if (Constant.isUpdateAvailable == true) ...[
+                    if (Constant.isUpdateAvailable == true)
                       updateTile(
                         context,
                         isUpdateAvailable: Constant.isUpdateAvailable,
@@ -513,8 +469,25 @@ class _ProfileScreenState extends State<ProfileScreen>
                           }
                         },
                       ),
-                    ],
 
+                    // if (Constant.isUpdateAvailable == true) ...[
+                    //   updateTile(
+                    //     context,
+                    //     isUpdateAvailable: Constant.isUpdateAvailable,
+                    //     title: "update".translate(context),
+                    //     newVersion: Constant.newVersionNumber,
+                    //     svgImagePath: AppIcons.update,
+                    //     onTap: () async {
+                    //       if (Platform.isIOS) {
+                    //         await launchUrl(Uri.parse(Constant.appstoreURLios));
+                    //       } else if (Platform.isAndroid) {
+                    //         await launchUrl(
+                    //             Uri.parse(Constant.playstoreURLAndroid));
+                    //       }
+                    //     },
+                    //   ),
+                    // ],
+                    //
                     if (HiveUtils.isUserAuthenticated()) ...[
                       customTile(
                         context,
@@ -524,12 +497,12 @@ class _ProfileScreenState extends State<ProfileScreen>
                           if (Constant.isDemoModeOn) {
                             if (HiveUtils.getUserDetails().mobile !=
                                 null) if (Constant
-                                .demoMobileNumber ==
+                                    .demoMobileNumber ==
                                 (HiveUtils.getUserDetails()
                                     .mobile!
                                     .replaceFirst(
-                                    "+${HiveUtils.getCountryCode()}",
-                                    ""))) {
+                                        "+${HiveUtils.getCountryCode()}",
+                                        ""))) {
                               HelperUtils.showSnackBarMessage(context,
                                   "thisActionNotValidDemo".translate(context));
                               return;
@@ -566,12 +539,12 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   Widget updateTile(BuildContext context,
       {required String title,
-        required String newVersion,
-        required bool isUpdateAvailable,
-        required String svgImagePath,
-        Function(dynamic value)? onTapSwitch,
-        dynamic switchValue,
-        required VoidCallback onTap}) {
+      required String newVersion,
+      required bool isUpdateAvailable,
+      required String svgImagePath,
+      Function(dynamic value)? onTapSwitch,
+      dynamic switchValue,
+      required VoidCallback onTap}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: GestureDetector(
@@ -595,7 +568,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                   child: isUpdateAvailable == false
                       ? const Icon(Icons.done)
                       : UiUtils.getSvg(svgImagePath,
-                      color: context.color.territoryColor)),
+                          color: context.color.territoryColor)),
             ),
             SizedBox(
               width: 25.rw(context),
@@ -604,8 +577,8 @@ class _ProfileScreenState extends State<ProfileScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(isUpdateAvailable == false
-                    ? "uptoDate".translate(context)
-                    : title)
+                        ? "uptoDate".translate(context)
+                        : title)
                     .bold(weight: FontWeight.w700)
                     .color(context.color.textColorDark),
                 if (isUpdateAvailable)
@@ -623,7 +596,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                 height: 32,
                 decoration: BoxDecoration(
                   border:
-                  Border.all(color: context.color.borderColor, width: 1.5),
+                      Border.all(color: context.color.borderColor, width: 1.5),
                   color: context.color.secondaryColor
                       .withOpacity(0.10000000149011612),
                   borderRadius: BorderRadius.circular(10),
@@ -650,11 +623,11 @@ class _ProfileScreenState extends State<ProfileScreen>
 //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rlc3Ricm9rZXJodWIud3J0ZWFtLmluL2FwaS91c2VyX3NpZ251cCIsImlhdCI6MTY5Njg1MDQyNCwibmJmIjoxNjk2ODUwNDI0LCJqdGkiOiJxVTNpY1FsRFN3MVJ1T3M5Iiwic3ViIjoiMzg4IiwicHJ2IjoiMWQwYTAyMGFjZjVjNGI2YzQ5Nzk4OWRmMWFiZjBmYmQ0ZThjOGQ2MyIsImN1c3RvbWVyX2lkIjozODh9.Y8sQhZtz6xGROEMvrTwA6gSSfPK-YwuhwDDc7Yahfg4
   Widget customTile(BuildContext context,
       {required String title,
-        required String svgImagePath,
-        bool? isSwitchBox,
-        Function(dynamic value)? onTapSwitch,
-        dynamic switchValue,
-        required VoidCallback onTap}) {
+      required String svgImagePath,
+      bool? isSwitchBox,
+      Function(dynamic value)? onTapSwitch,
+      dynamic switchValue,
+      required VoidCallback onTap}) {
     return Container(
       height: 60,
       margin: const EdgeInsets.only(top: 0.5, bottom: 3),
@@ -719,7 +692,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                     ),
                   ),
                 if (isSwitchBox ?? false)
-                // CupertinoSwitch(value: value, onChanged: onChanged)
+                  // CupertinoSwitch(value: value, onChanged: onChanged)
                   SizedBox(
                     height: 40,
                     width: 30,
@@ -764,17 +737,17 @@ class _ProfileScreenState extends State<ProfileScreen>
             : "deleteAlertTitle".translate(context),
         content: _auth.currentUser != null
             ? Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            bulletPoint("yourAdsAndTransactionDelete".translate(context)),
-            bulletPoint("accDetailsCanNotRecovered".translate(context)),
-            bulletPoint("subscriptionsCancelled".translate(context)),
-            bulletPoint(
-                "savedPreferencesAndMessagesLost".translate(context)),
-          ],
-        )
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  bulletPoint("yourAdsAndTransactionDelete".translate(context)),
+                  bulletPoint("accDetailsCanNotRecovered".translate(context)),
+                  bulletPoint("subscriptionsCancelled".translate(context)),
+                  bulletPoint(
+                      "savedPreferencesAndMessagesLost".translate(context)),
+                ],
+              )
             : Text("deleteRelogin".translate(context),
-            textAlign: TextAlign.center),
+                textAlign: TextAlign.center),
         cancelButtonName: (_auth.currentUser != null)
             ? 'no'.translate(context)
             : 'cancelLbl'.translate(context),
@@ -906,24 +879,24 @@ class _ProfileScreenState extends State<ProfileScreen>
         }
       },
       child: (context.watch<UserDetailsCubit>().state.user?.profile ?? "")
-          .trim()
-          .isEmpty
+              .trim()
+              .isEmpty
           ? buildDefaultPersonSVG(context)
           : Image.network(
-        context.watch<UserDetailsCubit>().state.user?.profile ?? "",
-        fit: BoxFit.cover,
-        width: 49,
-        height: 49,
-        errorBuilder: (BuildContext context, Object exception,
-            StackTrace? stackTrace) {
-          return buildDefaultPersonSVG(context);
-        },
-        loadingBuilder: (BuildContext context, Widget? child,
-            ImageChunkEvent? loadingProgress) {
-          if (loadingProgress == null) return child!;
-          return buildDefaultPersonSVG(context);
-        },
-      ),
+              context.watch<UserDetailsCubit>().state.user?.profile ?? "",
+              fit: BoxFit.cover,
+              width: 49,
+              height: 49,
+              errorBuilder: (BuildContext context, Object exception,
+                  StackTrace? stackTrace) {
+                return buildDefaultPersonSVG(context);
+              },
+              loadingBuilder: (BuildContext context, Widget? child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) return child!;
+                return buildDefaultPersonSVG(context);
+              },
+            ),
     );
   }
 
@@ -973,7 +946,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             onAccept: () async {
               Future.delayed(
                 Duration.zero,
-                    () {
+                () {
                   HiveUtils.clear();
                   Constant.favoriteItemList.clear();
                   context.read<UserDetailsCubit>().clear();
