@@ -37,20 +37,16 @@ class HomeSearchField extends StatelessWidget {
           absorbing: true,
           child: Container(
               width: double.infinity,
-              height: 48.rh(
+              height: 36.rh(
                 context,
               ),
               alignment: AlignmentDirectional.center,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                      width: 1, color: context.color.borderColor.darken(30)),
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  color: context.color.secondaryColor),
+              padding: EdgeInsets.symmetric(vertical: 8.0),
               child: TextFormField(
                   readOnly: true,
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    //OutlineInputBorder()
+                    //OutlineInputBorder(),
                     fillColor: Theme.of(context).colorScheme.secondaryColor,
                     hintText: "searchHintLbl".translate(context),
                     hintStyle: TextStyle(
@@ -59,7 +55,9 @@ class HomeSearchField extends StatelessWidget {
                     prefixIcon: buildSearchIcon(),
                     prefixIconConstraints:
                         const BoxConstraints(minHeight: 5, minWidth: 5),
+
                   ),
+
                   enableSuggestions: true,
                   onEditingComplete: () {
                     FocusScope.of(context).unfocus();

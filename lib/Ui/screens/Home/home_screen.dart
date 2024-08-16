@@ -9,6 +9,7 @@ import 'package:eClassify/data/cubits/favorite/favoriteCubit.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../../Utils/AppIcon.dart';
 import '../../../Utils/api.dart';
 
 import '../../../data/cubits/chatCubits/blocked_users_list_cubit.dart';
@@ -138,20 +139,7 @@ class HomeScreenState extends State<HomeScreen>
         appBar: AppBar(
           elevation: 0,
           leadingWidth: double.maxFinite,
-          leading: Padding(
-              padding: EdgeInsetsDirectional.only(
-                  start: sidePadding.rw(context), end: sidePadding.rw(context)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                      flex: 1,
-                      child: const LocationWidget(
-                        from: 'home',
-                      )),
-                  Flexible(flex: 2, child: const HomeSearchField()),
-                ],
-              )),
+          leading: UiUtils.getSvg(AppIcons.companyLogo),
           /* HiveUtils.getCityName() != null
                     ? const LocationWidget()
                     : const SizedBox.shrink()),*/
@@ -178,6 +166,55 @@ class HomeScreenState extends State<HomeScreen>
             controller: _scrollController,
             child: Column(
               children: [
+                Container(
+                  // decoration: BoxDecoration(
+                  //     gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+                  //       Color(0xFF002f34),
+                  //       Color(0xff013d43),
+                  //       Color(0xff01434a),
+                  //     ]),
+                  //     borderRadius: BorderRadius.only(
+                  //         bottomLeft: Radius.circular(40),
+                  //         bottomRight: Radius.circular(40))
+                  // ),
+
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            width: 1,
+                            color: context.color.borderColor.darken(30)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(16)),
+                        color: context.color.secondaryColor),
+                    //padding: EdgeInsets.symmetric(horizontal: 10),
+                    margin: EdgeInsets.all(16.0),
+                    // Padding inside the container
+                    child: Column(
+                      children: [
+                        //UiUtils.getSvg(AppIcons.companyLogo),
+                        Row(
+                          //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Flexible(flex: 2, child: const HomeSearchField()),
+                            Text(
+                              '|',
+                              style: TextStyle(
+                                color: context.color.textDefaultColor
+                                    .withOpacity(0.5),
+                              ),
+                            ),
+                            Flexible(
+                                flex: 1,
+                                child: const LocationWidget(
+                                  from: 'home',
+                                )),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
                 BlocBuilder<FetchHomeScreenCubit, FetchHomeScreenState>(
                   builder: (context, state) {
                     /* if (state is FetchHomeScreenFail) {
@@ -550,7 +587,6 @@ class AllItemsWidget extends StatelessWidget {
     );
   }
 }
-
 
 /// home section add Item card
 // Widget _builderWrapper(FetchHomeAllItemsSuccess state, BuildContext context,
