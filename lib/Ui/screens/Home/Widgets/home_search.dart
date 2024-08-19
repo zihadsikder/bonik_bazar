@@ -36,7 +36,7 @@ class HomeSearchField extends StatelessWidget {
         child: AbsorbPointer(
           absorbing: true,
           child: Container(
-              width: double.infinity,
+              width: 160.rw(context),
               height: 36.rh(
                 context,
               ),

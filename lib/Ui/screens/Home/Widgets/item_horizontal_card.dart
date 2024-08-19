@@ -214,6 +214,7 @@ class ItemHorizontalCard extends StatelessWidget {
                                         .size(context.font.large)
                                         .color(context.color.territoryColor)
                                         .bold(weight: FontWeight.w700),
+
                                   ),
                                   if (showLikeButton ?? true) favButton(context)
                                 ],

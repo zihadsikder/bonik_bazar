@@ -169,7 +169,7 @@ class LocationWidget extends StatelessWidget {
               if (result != null) {}*/
             },
             child: Container(
-              width: 40.rw(context),
+              width: 20.rw(context),
               height: 40.rh(context),
               decoration: BoxDecoration(
                   color: context.color.secondaryColor,
@@ -192,11 +192,11 @@ class LocationWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("locationLbl".translate(context))
-                        .color(context.color.textColorDark)
-                        .size(
-                          context.font.small,
-                        ),
+                    // Text("locationLbl".translate(context))
+                    //     .color(context.color.textColorDark)
+                    //     .size(
+                    //       context.font.small,
+                    //     ),
                     Text(
                       HiveUtils.getCityName() == null
                           ? "---"

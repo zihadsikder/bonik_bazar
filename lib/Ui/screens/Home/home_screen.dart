@@ -145,7 +145,9 @@ class HomeScreenState extends State<HomeScreen>
                     : const SizedBox.shrink()),*/
           backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         ),
-        drawer: Drawer(),
+        drawer: Drawer(
+          child : Text('avsd'),
+        ),
         //backgroundColor: context.color.primaryColor,
         body: RefreshIndicator(
           key: _refreshIndicatorKey,
@@ -194,7 +196,7 @@ class HomeScreenState extends State<HomeScreen>
                       children: [
                         //UiUtils.getSvg(AppIcons.companyLogo),
                         Row(
-                          //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Flexible(flex: 2, child: const HomeSearchField()),
                             Text(
