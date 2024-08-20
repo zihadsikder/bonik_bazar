@@ -448,10 +448,29 @@ class AdDetailsScreenState extends CloudState<AdDetailsScreen> {
                   if (isAddedByMe) setLikesAndViewsCount(),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Text(model.name!)
-                        .size(context.font.large)
-                        .setMaxLines(lines: 2)
-                        .color(context.color.textDefaultColor),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(model.name!)
+                            .size(context.font.large)
+                            .setMaxLines(lines: 2)
+                            .color(context.color.textDefaultColor),
+
+                        /// add boost your post button in ad details screen
+
+                        TextButton(
+                          style: TextButton.styleFrom(
+
+                            backgroundColor: Colors.amber
+                          ),
+                            onPressed: (){}, child: Row(
+                              children: [
+                                Icon(Icons.electric_bolt_outlined,),
+                                Text('Boost your post'),
+                              ],
+                            ))
+                      ],
+                    ),
                   ),
                   setPriceAndStatus(),
                   if (isAddedByMe) setRejectedReason(),
