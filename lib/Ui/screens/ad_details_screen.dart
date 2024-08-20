@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
+import 'package:eClassify/Ui/screens/Advertisement/boost_details_screen.dart';
 import 'package:eClassify/Ui/screens/Home/home_screen.dart';
 import 'package:eClassify/Ui/screens/widgets/AnimatedRoutes/blur_page_route.dart';
 import 'package:eClassify/Ui/screens/widgets/blurred_dialoge_box.dart';
@@ -459,13 +460,20 @@ class AdDetailsScreenState extends CloudState<AdDetailsScreen> {
                         /// add boost your post button in ad details screen
 
                         TextButton(
-                          style: TextButton.styleFrom(
-
-                            backgroundColor: Colors.amber
-                          ),
-                            onPressed: (){}, child: Row(
+                            style: TextButton.styleFrom(
+                                backgroundColor: Colors.amber),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BoostDetailsScreen()),
+                              );
+                            },
+                            child: Row(
                               children: [
-                                Icon(Icons.electric_bolt_outlined,),
+                                Icon(
+                                  Icons.electric_bolt_outlined,
+                                ),
                                 Text('Boost your post'),
                               ],
                             ))
