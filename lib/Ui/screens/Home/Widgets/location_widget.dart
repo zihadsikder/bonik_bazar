@@ -197,33 +197,37 @@ class LocationWidget extends StatelessWidget {
                     //     .size(
                     //       context.font.small,
                     //     ),
-                    Text(
-                      HiveUtils.getCityName() == null
-                          ? "---"
-                          : (HiveUtils.getAreaName() ?? "") +
-                              ((HiveUtils.getAreaName() == null ||
-                                          HiveUtils.getAreaName() == ""
-                                      ? ""
-                                      : ",") +
-                                  (HiveUtils.getCityName() ?? "") +
-                                  (HiveUtils.getStateName() == null ||
-                                          HiveUtils.getStateName() == ""
-                                      ? ""
-                                      : ",") +
-                                  (HiveUtils.getStateName() ?? "") +
-                                  (HiveUtils.getCountryName() == null ||
-                                          HiveUtils.getCountryName() == ""
-                                      ? ""
-                                      : ",") +
-                                  (HiveUtils.getCountryName() ?? "")) +
-                              "",
-                      maxLines: 1,
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis,
-                    )
-                        .color(context.color.textColorDark)
-                        .size(context.font.small)
-                        .bold(weight: FontWeight.w600),
+                    Container(
+                      width: 140,
+
+                      child: Text(
+                        HiveUtils.getCityName() == null
+                            ? "---"
+                            : (HiveUtils.getAreaName() ?? "") +
+                                ((HiveUtils.getAreaName() == null ||
+                                            HiveUtils.getAreaName() == ""
+                                        ? ""
+                                        : ",") +
+                                    (HiveUtils.getCityName() ?? "") +
+                                    (HiveUtils.getStateName() == null ||
+                                            HiveUtils.getStateName() == ""
+                                        ? ""
+                                        : ",") +
+                                    (HiveUtils.getStateName() ?? "") +
+                                    (HiveUtils.getCountryName() == null ||
+                                            HiveUtils.getCountryName() == ""
+                                        ? ""
+                                        : ",") +
+                                    (HiveUtils.getCountryName() ?? "")) +
+                                "",
+                        //maxLines: 1,
+                        //softWrap: true,
+                        overflow: TextOverflow.ellipsis,
+                      )
+                          .color(context.color.textColorDark)
+                          .size(context.font.small)
+                          .bold(weight: FontWeight.w600),
+                    ),
                   ],
                 );
               }),
