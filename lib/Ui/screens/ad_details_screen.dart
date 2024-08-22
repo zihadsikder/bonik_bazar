@@ -463,11 +463,11 @@ class AdDetailsScreenState extends CloudState<AdDetailsScreen> {
                             style: TextButton.styleFrom(
                                 backgroundColor: Colors.amber),
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BoostDetailsScreen()),
-                              );
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //       builder: (context) => BoostDetailsScreen()),
+                              // );
                             },
                             child: Row(
                               children: [
