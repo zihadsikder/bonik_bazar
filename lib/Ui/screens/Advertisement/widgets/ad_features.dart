@@ -75,7 +75,7 @@ class _AdFeaturesState extends State<AdFeatures> {
                               },
                             ),
                             SizedBox(width: 4.0),
-                            Text("7 Days - "),
+                            Text("3 Days - "),
                             Text("TK 900"),
                           ],
                         ),
