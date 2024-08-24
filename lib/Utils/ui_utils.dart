@@ -314,7 +314,7 @@ class UiUtils {
         children: [
           Expanded(
             child: RoundedBorderOnSomeSidesWidget(
-              borderColor: context.color.borderColor,
+              borderColor: Colors.transparent,
               borderRadius: 0,
               borderWidth: 1.5,
               contentBackgroundColor:

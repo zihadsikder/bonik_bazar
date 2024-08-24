@@ -306,17 +306,18 @@ class _ProfileScreenState extends State<ProfileScreen>
                         );
                       },
                     ),
-                    customTile(
-                      context,
-                      title: "language".translate(context),
-                      svgImagePath: AppIcons.language,
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          Routes.languageListScreenRoute,
-                        );
-                      },
-                    ),
+                    /// hide language
+                    // customTile(
+                    //   context,
+                    //   title: "language".translate(context),
+                    //   svgImagePath: AppIcons.language,
+                    //   onTap: () {
+                    //     Navigator.pushNamed(
+                    //       context,
+                    //       Routes.languageListScreenRoute,
+                    //     );
+                    //   },
+                    // ),
                     ValueListenableBuilder(
                       valueListenable: isDarkTheme,
                       builder: (context, value, child) {
@@ -353,22 +354,23 @@ class _ProfileScreenState extends State<ProfileScreen>
                         );
                       },
                     ),
-                    customTile(
-                      context,
-                      title: "blogs".translate(context),
-                      svgImagePath: AppIcons.articles,
-                      onTap: () {
-                        UiUtils.checkUser(
-                          onNotGuest: () {
-                            Navigator.pushNamed(
-                              context,
-                              Routes.blogsScreenRoute,
-                            );
-                          },
-                          context: context,
-                        );
-                      },
-                    ),
+                    /// hide blogs
+                    // customTile(
+                    //   context,
+                    //   title: "blogs".translate(context),
+                    //   svgImagePath: AppIcons.articles,
+                    //   onTap: () {
+                    //     UiUtils.checkUser(
+                    //       onNotGuest: () {
+                    //         Navigator.pushNamed(
+                    //           context,
+                    //           Routes.blogsScreenRoute,
+                    //         );
+                    //       },
+                    //       context: context,
+                    //     );
+                    //   },
+                    // ),
                     customTile(
                       context,
                       title: "favorites".translate(context),

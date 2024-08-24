@@ -174,7 +174,9 @@ class _MyAdvertisementScreenState extends State<MyAdvertisementScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-          ),
+
+     ),
+
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[

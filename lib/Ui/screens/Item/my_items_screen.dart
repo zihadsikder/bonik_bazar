@@ -63,6 +63,7 @@ class MyItemState extends State<ItemsScreen> with TickerProviderStateMixin {
       value: UiUtils.getSystemUiOverlayStyle(
           context: context, statusBarColor: context.color.secondaryColor),
       child: Scaffold(
+
         backgroundColor: context.color.primaryColor,
         appBar: UiUtils.buildAppBar(
           context,
@@ -71,34 +72,41 @@ class MyItemState extends State<ItemsScreen> with TickerProviderStateMixin {
           bottomHeight: 49,
 
           bottom: [
-            SizedBox(
-              width: context.screenWidth,
-              height: 45,
-              child: ListView.separated(
-                shrinkWrap: true,
-                padding: const EdgeInsetsDirectional.fromSTEB(18, 5, 18, 2),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  Map section = sections[index];
-                  return customTab(
-                    context,
-                    isSelected: (selectTab == index),
-                    onTap: () {
-                      selectTab = index;
-                      //itemScreenCurrentPage = index;
-                      setState(() {});
-                      _pageController.jumpToPage(index);
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+
+                width: double.infinity,
+                child: SizedBox(
+                  width: context.screenWidth,
+                  height: 45,
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    padding: const EdgeInsetsDirectional.fromSTEB(18, 5, 18, 2),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      Map section = sections[index];
+                      return customTab(
+                        context,
+                        isSelected: (selectTab == index),
+                        onTap: () {
+                          selectTab = index;
+                          //itemScreenCurrentPage = index;
+                          setState(() {});
+                          _pageController.jumpToPage(index);
+                        },
+                        name: section['title'],
+                        onDoubleTap: () {},
+                      );
                     },
-                    name: section['title'],
-                    onDoubleTap: () {},
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    width: 8,
-                  );
-                },
-                itemCount: sections.length,
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(
+                        width: 8,
+                      );
+                    },
+                    itemCount: sections.length,
+                  ),
+                ),
               ),
             ),
           ],
