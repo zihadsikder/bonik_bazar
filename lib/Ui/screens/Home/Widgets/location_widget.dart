@@ -169,6 +169,7 @@ class LocationWidget extends StatelessWidget {
               if (result != null) {}*/
             },
             child: Container(
+
               width: 20.rw(context),
               height: 40.rh(context),
               decoration: BoxDecoration(
@@ -198,7 +199,11 @@ class LocationWidget extends StatelessWidget {
                     //       context.font.small,
                     //     ),
                     Container(
-                      width: 140,
+                      //color: Colors.amber,
+                      width: 130.rw(context),
+                      //width: 130.rw(context),
+
+                      padding: EdgeInsets.only(right: 16,top: 8,bottom: 8),
 
                       child: Text(
                         HiveUtils.getCityName() == null

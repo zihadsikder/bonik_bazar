@@ -27,10 +27,10 @@ class PaymentGateway {
 class AppSettings {
   /// Basic Settings
   static const String applicationName = 'Bonik Bazar';
-  static const String andoidPackageName = 'com.bonikbazar.app';
+  static const String andoidPackageName = 'com.bonikbazar';
   static const String iOSAppId = '12345678';
   static const String playstoreURLAndroid =
-      "https://play.google.com/store/apps/details?id=com.bonikbazar.app";
+      "https://play.google.com/store/apps/details?id=com.bonikbazar";
   static const String appstoreURLios = "https://apps.apple.com/";
   static const String shareAppText = "Share this App";
 
