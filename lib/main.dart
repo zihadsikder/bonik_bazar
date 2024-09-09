@@ -124,7 +124,8 @@ class _AppState extends State<App> {
                     },
                   ),
                 ),
-              ); /*MediaQuery(
+              );
+              /*MediaQuery(
                 data: MediaQuery.of(context).copyWith(
                   textScaler: const TextScaler.linear(
                       1.0), //set text scale factor to 1 so that this will not resize app's text while user change their system settings text scale

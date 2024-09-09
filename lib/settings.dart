@@ -27,10 +27,10 @@ class PaymentGateway {
 class AppSettings {
   /// Basic Settings
   static const String applicationName = 'Bonik Bazar';
-  static const String andoidPackageName = 'com.bonikbazar';
+  static const String andoidPackageName = 'bd.bonikbazar.app';
   static const String iOSAppId = '12345678';
   static const String playstoreURLAndroid =
-      "https://play.google.com/store/apps/details?id=com.bonikbazar";
+      "https://play.google.com/store/apps/details?id=bd.bonikbazar.app";
   static const String appstoreURLios = "https://apps.apple.com/";
   static const String shareAppText = "Share this App";
 
@@ -65,7 +65,7 @@ it will call API in background without showing the process and when data availab
 
   /// You will find this prefix from firebase console in dynamic link section
   static const String deepLinkPrefix =
-      "https://xyz.bonikbazar.page.link"; //demo.page.link
+      "https://xyz.bonikbazar.com.bd.page.link"; //demo.page.link
 
   //set anything you want
   static const String deepLinkName = "xyz.bonikbazar.com.bd"; //deeplink demo.com

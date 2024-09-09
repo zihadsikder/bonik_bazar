@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "819478028000",
-    "project_id": "bonik-bazar-83a92",
-    "storage_bucket": "bonik-bazar-83a92.appspot.com"
+    "project_number": "642331156211",
+    "project_id": "bonik-bazar-4f74f",
+    "storage_bucket": "bonik-bazar-4f74f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:819478028000:android:1385238443cb75e1577a85",
+        "mobilesdk_app_id": "1:642331156211:android:38b44f70f41d61fc01a186",
         "android_client_info": {
-          "package_name": "com.bonikbazar"
+          "package_name": "bd.bonikbazar.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "819478028000-tquvafatf5i751o9h1kp0645nkm6ftpu.apps.googleusercontent.com",
+          "client_id": "642331156211-tn5t9hrb96230768fi0m62dmgac3glmq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.bonikbazar",
+            "package_name": "bd.bonikbazar.app",
             "certificate_hash": "eb8ff96246cdd8871ca6e6ed1fec2efa5e8fd08c"
           }
         },
         {
-          "client_id": "819478028000-cu3ab65v1oh0so5jlbi48rv4b33ntm72.apps.googleusercontent.com",
+          "client_id": "642331156211-hdj7461k3gimaon4rgd2v39m0rj4dps6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAWVLohh2n13n5xie770i_E-PrdAOkCHOA"
+          "current_key": "AIzaSyCY4wR6IhS7odQugNBetQbxi9JHskPoXg0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "819478028000-cu3ab65v1oh0so5jlbi48rv4b33ntm72.apps.googleusercontent.com",
+              "client_id": "642331156211-hdj7461k3gimaon4rgd2v39m0rj4dps6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

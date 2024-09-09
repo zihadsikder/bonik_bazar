@@ -1,4 +1,4 @@
-package com.bonikbazar
+package bd.bonikbazar.app
 
 
 import io.flutter.embedding.android.FlutterActivity
