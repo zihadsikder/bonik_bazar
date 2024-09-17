@@ -39,7 +39,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCY4wR6IhS7odQugNBetQbxi9JHskPoXg0" />
+            android:value="AIzaSyBjOUXowt0WWUmIXKFHC0dNuV8WbSIZZr0" />
 
 
         <activity
@@ -98,7 +98,9 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713" />
-
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
 
     </application>
 </manifest>

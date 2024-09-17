@@ -1,20 +1,36 @@
 {
   "project_info": {
-    "project_number": "642331156211",
-    "project_id": "bonik-bazar-4f74f",
-    "storage_bucket": "bonik-bazar-4f74f.appspot.com"
+    "project_number": "254423448681",
+    "project_id": "bonikbazar-d57a4",
+    "storage_bucket": "bonikbazar-d57a4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:642331156211:android:38b44f70f41d61fc01a186",
+        "mobilesdk_app_id": "1:254423448681:android:8531cd3c4a932dc6e6b6f8",
         "android_client_info": {
           "package_name": "bd.bonikbazar.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "642331156211-tn5t9hrb96230768fi0m62dmgac3glmq.apps.googleusercontent.com",
+          "client_id": "254423448681-hc4ic46djs2hhaci9vethqm9ndumug3v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bd.bonikbazar.app",
+            "certificate_hash": "87e2b7d19cf6229fbc23204a0a487ad416c636da"
+          }
+        },
+        {
+          "client_id": "254423448681-k0eac3dp98edkje762tqc5qae615gglq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bd.bonikbazar.app",
+            "certificate_hash": "fd0c7fa6c89952a791dd4487f7258a91ffcb6541"
+          }
+        },
+        {
+          "client_id": "254423448681-kggmkf7l13g4jhg79tma43ads0sc65bg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "bd.bonikbazar.app",
@@ -22,20 +38,20 @@
           }
         },
         {
-          "client_id": "642331156211-hdj7461k3gimaon4rgd2v39m0rj4dps6.apps.googleusercontent.com",
+          "client_id": "254423448681-so25bcps648cqd436lb8dlnv3c3gaego.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCY4wR6IhS7odQugNBetQbxi9JHskPoXg0"
+          "current_key": "AIzaSyBjOUXowt0WWUmIXKFHC0dNuV8WbSIZZr0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "642331156211-hdj7461k3gimaon4rgd2v39m0rj4dps6.apps.googleusercontent.com",
+              "client_id": "254423448681-so25bcps648cqd436lb8dlnv3c3gaego.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
