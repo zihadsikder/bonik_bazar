@@ -252,7 +252,7 @@ class _ItemCardState extends State<ItemCard> {
             width: 1,
           ),
           color: context.color.secondaryColor,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(2.0),
         ),
         child: Stack(
           children: [
@@ -262,10 +262,10 @@ class _ItemCardState extends State<ItemCard> {
                 Stack(
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(18),
+                      borderRadius: BorderRadius.circular(2.0),
                       child: UiUtils.getImage(
                         widget.item?.image ?? "",
-                        height: imageHeight,
+                        height: imageHeight + 20,
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ),
@@ -279,7 +279,7 @@ class _ItemCardState extends State<ItemCard> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -366,7 +366,7 @@ class _ItemCardState extends State<ItemCard> {
                   }),
                   builder: (context, state) {
                     return PositionedDirectional(
-                      top: imageHeight - (likeButtonSize / 2) - 2,
+                      top: imageHeight + 20 - (likeButtonSize / 2) - 2,
                       end: 16,
                       child: InkWell(
                         onTap: () {

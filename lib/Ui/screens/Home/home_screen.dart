@@ -31,7 +31,7 @@ import 'Widgets/home_shimmers.dart';
 import 'Widgets/location_widget.dart';
 import 'slider_widget.dart';
 
-const double sidePadding = 18;
+const double sidePadding = 10;
 
 class HomeScreen extends StatefulWidget {
   final String? from;
@@ -145,9 +145,7 @@ class HomeScreenState extends State<HomeScreen>
                     : const SizedBox.shrink()),*/
           backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         ),
-        drawer: Drawer(
-          child : Text('avsd'),
-        ),
+        //drawer: Drawer(),
         //backgroundColor: context.color.primaryColor,
         body: RefreshIndicator(
           key: _refreshIndicatorKey,
@@ -190,7 +188,7 @@ class HomeScreenState extends State<HomeScreen>
                             const BorderRadius.all(Radius.circular(16)),
                         color: context.color.secondaryColor),
                     //padding: EdgeInsets.symmetric(horizontal: 10),
-                    margin: EdgeInsets.all(16.0),
+                    margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8),
                     // Padding inside the container
                     child: Column(
                       children: [
@@ -275,11 +273,10 @@ class HomeScreenState extends State<HomeScreen>
 
                 /// show a single bar
                 Container(
-                  height: 1,
-                  color: context.color.territoryColor,
-                  margin:
-                      EdgeInsets.only(top: 12, bottom: 8, right: 16, left: 16),
-                ),
+                    height: 1,
+                    color: context.color.territoryColor,
+                    margin: EdgeInsets.only(
+                        top: 10, bottom: 0, right: 10, left: 10)),
 
                 /// all Item widgets
                 const AllItemsWidget(),
@@ -537,7 +534,7 @@ class AllItemsWidget extends StatelessWidget {
                   type: ListUiType.Mixed,
                   mixMode: true,
                   crossAxisCount: 2,
-                  height: MediaQuery.of(context).size.height / 3.5.rh(context),
+                  height: MediaQuery.of(context).size.height / 3.3.rh(context),
                   builder: (context, int index, bool isGrid) {
                     ItemModel? item = state.items[index];
 

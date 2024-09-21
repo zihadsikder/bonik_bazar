@@ -78,8 +78,8 @@ class GridListAdapter extends StatelessWidget {
               crossAxisCount: crossAxisCount ?? 2,
 
               height: height ?? 1,
-              mainAxisSpacing: 15,
-              crossAxisSpacing: 15
+              mainAxisSpacing: 8,
+              crossAxisSpacing: 8
             ),
             itemBuilder: (context, index) => builder(context, i + index, true),
             itemCount: min(gridCount, total - i),

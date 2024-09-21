@@ -25,7 +25,7 @@ class HomeSearchField extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: () {
