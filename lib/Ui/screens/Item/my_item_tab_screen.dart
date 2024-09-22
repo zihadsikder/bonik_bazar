@@ -1,4 +1,5 @@
 
+import 'package:eClassify/Ui/screens/Advertisement/widgets/boost_button.dart';
 import 'package:eClassify/Ui/screens/Home/home_screen.dart';
 import 'package:eClassify/Utils/AppIcon.dart';
 import 'package:eClassify/Utils/ui_utils.dart';
@@ -316,9 +317,16 @@ class _MyItemTabState extends CloudState<MyItemTab> {
                                           ],
                                         ),
                                         //SizedBox(height: 7,),
-                                        Text(item.name ?? "")
-                                            .setMaxLines(lines: 2)
-                                            .firstUpperCaseWidget(),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(item.name ?? "")
+                                                .setMaxLines(lines: 2)
+                                                .firstUpperCaseWidget(),
+                                            Spacer(),
+                                            BoostButton(),
+                                          ],
+                                        ),
                                         //SizedBox(height: 12,),
                                         Row(
                                           //mainAxisAlignment: MainAxisAlignment.spaceAround,

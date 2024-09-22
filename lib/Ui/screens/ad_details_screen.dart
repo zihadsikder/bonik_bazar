@@ -43,6 +43,7 @@ import '../../data/cubits/item/delete_item_cubit.dart';
 import '../../data/cubits/subscription/fetch_user_package_limit_cubit.dart';
 import '../../data/model/ReportProperty/reason_model.dart';
 import 'AdBannderScreen.dart';
+import 'Advertisement/widgets/boost_button.dart';
 import 'Chat/chat_screen.dart';
 import 'Home/Widgets/grid_list_adapter.dart';
 import 'Home/Widgets/home_sections_adapter.dart';
@@ -459,24 +460,7 @@ class AdDetailsScreenState extends CloudState<AdDetailsScreen> {
 
                         /// add boost your post button in ad details screen
 
-                        TextButton(
-                            style: TextButton.styleFrom(
-                                backgroundColor: Colors.amber),
-                            onPressed: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) => BoostDetailsScreen()),
-                              // );
-                            },
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.electric_bolt_outlined,
-                                ),
-                                Text('Boost your post'),
-                              ],
-                            ))
+                        BoostButton()
                       ],
                     ),
                   ),
@@ -2627,3 +2611,5 @@ class AdDetailsScreenState extends CloudState<AdDetailsScreen> {
     });
   }
 }
+
+
